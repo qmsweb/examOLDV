@@ -5,41 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>قريبًا</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://rawafid.jassim.one/images/favicon.png" type="image/jpg">
+  <link rel="icon" href="https://rawafid.jassim.one/images/favicon.png" type="image/png">
   <style>
-body {
-  margin: 0;
-  background: url('https://exam.jassim.one/cover.png') no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'Noto Kufi Arabic', sans-serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 87vh;
-  text-align: center;
-}
-
-
-    img {
-      max-width: 150px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 0px;
-      filter: brightness(0) invert(1);
+    body {
+      margin: 0;
+      background: url('https://exam.jassim.one/cover.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      position: relative;
     }
 
+    /* الشعار في الأعلى يمين */
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      max-width: 180px; /* عدّل الحجم حسب شعارك */
+      height: auto;
+    }
+
+    /* الصورة الرئيسية (واجهة الآيفون) */
+    .main-image {
+      max-width: 300px; /* يمكن تعديلها حسب أبعاد الصورة */
+      width: 90%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    /* النص تحت الصورة */
     p {
       font-size: 22px;
       font-weight: 700;
+      margin: 10px 0 20px;
+    }
+
+    /* الزر */
+    .button {
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background-color: #ddd;
     }
   </style>
 </head>
 <body>
 
-  <img src="https://rawafid.jassim.one/images/favicon.png" alt="قريبًا">
-  <p>انتظرونا قريبًا</p>
+  <!-- شعار أعلى اليمين -->
+  <img src="https://rawafid.jassim.one/images/Rawafid-white.png" class="logo">
+
+  <!-- الصورة الرئيسية -->
+  <img src="https://exam.jassim.one/main.PNG"  class="main-image">
+
+  <!-- النص -->
+  <p>انطلاقة جديدة!</p>
+
+  <!-- الزر -->
+  <a href="https://rawafid.jassim.one" class="button">اضفط للانتقال للموقع الجديد</a>
 
 </body>
 </html>
