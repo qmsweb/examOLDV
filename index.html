@@ -30,8 +30,8 @@
     /* الشعار في الأعلى يمين - مع مسافات مناسبة */
     .logo {
       position: absolute;
-      top: 25px; /* زيادة المسافة من الأعلى */
-      right: 25px; /* زيادة المسافة من اليمين */
+      top: 25px;
+      right: 25px;
       max-width: 120px;
       width: 20vw;
       min-width: 80px;
@@ -48,7 +48,8 @@
       flex: 1;
       width: 100%;
       max-width: 600px;
-      margin-top: 80px; /* زيادة الهوامش لتعويض المسافات الجديدة */
+      margin-top: 80px;
+      margin-bottom: 40px; /* إضافة مسافة من الأسفل */
     }
 
     /* الصورة الرئيسية - بدون توهج */
@@ -58,7 +59,7 @@
       max-width: 300px;
       min-width: 200px;
       height: auto;
-      margin-bottom: 20px;
+      margin-bottom: 10px; /* تقليل المسافة تحت الصورة */
       border-radius: 20px;
     }
 
@@ -66,7 +67,7 @@
     p {
       font-size: 22px;
       font-weight: 700;
-      margin: 10px 0 20px;
+      margin: 5px 0 25px; /* تقليل المسافة العلوية وزيادة السفلية */
     }
 
     /* الزر */
@@ -83,6 +84,7 @@
       text-decoration: none;
       display: inline-block;
       margin-top: 10px;
+      margin-bottom: 20px; /* إضافة مسافة تحت الزر */
     }
 
     .button:hover {
@@ -93,66 +95,83 @@
     @media (max-width: 768px) {
       .logo {
         max-width: 100px;
-        top: 20px; /* مسافة مناسبة للشاشات المتوسطة */
+        top: 20px;
         right: 20px;
       }
       
       .content {
         margin-top: 70px;
+        margin-bottom: 35px;
       }
       
       .main-image {
         max-width: 250px;
+        margin-bottom: 8px;
       }
       
       p {
         font-size: 20px;
+        margin: 4px 0 20px;
       }
       
       .button {
         font-size: 16px;
         padding: 10px 25px;
+        margin-bottom: 15px;
       }
     }
 
     @media (max-width: 480px) {
       .logo {
         max-width: 80px;
-        top: 15px; /* مسافة مناسبة للشاشات الصغيرة */
+        top: 15px;
         right: 15px;
       }
       
       .content {
         margin-top: 60px;
+        margin-bottom: 30px;
       }
       
       .main-image {
         max-width: 200px;
+        margin-bottom: 6px;
       }
       
       p {
         font-size: 18px;
+        margin: 3px 0 18px;
       }
       
       .button {
         font-size: 14px;
         padding: 8px 20px;
+        margin-bottom: 12px;
       }
     }
 
     @media (max-height: 600px) {
       .logo {
-        top: 15px; /* مسافة أقل للشاشات القصيرة */
+        top: 15px;
         right: 15px;
       }
       
       .content {
         margin-top: 60px;
+        margin-bottom: 25px;
       }
       
       .main-image {
         max-width: 200px;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
+      }
+      
+      p {
+        margin: 2px 0 15px;
+      }
+      
+      .button {
+        margin-bottom: 10px;
       }
     }
   </style>
