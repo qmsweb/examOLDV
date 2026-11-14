@@ -1,204 +1,362 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>روافد</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://rawafid.jassim.one/images/favicon.png" type="image/png">
+
+  <!-- خطوط -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.png" type="image/jpg">
+  <!-- أيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="topbar.css" />
+
+<meta property="og:title" content="روافد" id="og-title">
+  <meta property="og:description" content="منصة تعليمية مجانية خصيصًا لطلبة اللغة العربية بجامعة الشرقية." id="og-description">
+  <meta property="og:image" content="/images/cover.png" id="og-image">
+  <meta property="og:url" content="https://rawafid.jassim.one/index.html">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="روافد" id="twitter-title">
+  <meta name="twitter:description" content="منصة تعليمية مجانية خصيصًا لطلبة اللغة العربية بجامعة الشرقية." id="twitter-description">
+  <meta name="twitter:image" content="/images/cover.png" id="twitter-image">
+  
+
   <style>
+    :root {
+      --primary-color: #1a2ac6;
+      --hover-bg: #e0e7ff;
+      --light-bg: #f0f2f7;
+      --light-border: #ccd1e0;
+    }
+
     * {
-      box-sizing: border-box;
-    }
-    
-    body {
       margin: 0;
-      padding: 20px;
-      background: url('https://exam.jassim.one/cover.png') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Noto Kufi Arabic', sans-serif;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Noto Kufi Arabic", sans-serif;
+    }
+
+    body {
+      background-color: #f4f6fb;
+      color: #2d2d2d;
       min-height: 100vh;
-      text-align: center;
-      position: relative;
+      padding: 20px;
+      padding-top: 80px;   
     }
 
-    /* الشعار في الأعلى يمين - مع مسافات مناسبة */
-    .logo {
-      position: absolute;
-      top: 25px;
-      right: 25px;
-      max-width: 120px;
-      width: 20vw;
-      min-width: 80px;
-      height: auto;
-      z-index: 10;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* الحاوية الرئيسية للمحتوى */
-    .content {
+    .filter-bar {
       display: flex;
-      flex-direction: column;
+      gap: 10px;
+      overflow-x: auto;
       align-items: center;
-      justify-content: center;
-      flex: 1;
-      width: 100%;
-      max-width: 600px;
-      margin-top: 80px;
-      margin-bottom: 40px; /* إضافة مسافة من الأسفل */
+      padding: 10px 0;
+      margin-bottom: 25px;
     }
 
-    /* الصورة الرئيسية - بدون توهج */
-    .main-image {
-      max-width: 300px;
-      width: 80%;
-      max-width: 300px;
-      min-width: 200px;
-      height: auto;
-      margin-bottom: 10px; /* تقليل المسافة تحت الصورة */
-      border-radius: 20px;
-    }
-
-    /* النص تحت الصورة */
-    p {
-      font-size: 22px;
+    .filter-item {
+      flex: 0 0 auto;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: var(--light-bg);
+      color: var(--primary-color);
       font-weight: 700;
-      margin: 5px 0 25px; /* تقليل المسافة العلوية وزيادة السفلية */
+      font-size: 0.75rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.3s ease;
+      white-space: nowrap;
     }
 
- p1 {
-      font-size: 18px;
-      font-weight: 500;
-      margin: 0px 0 5px; /* تقليل المسافة العلوية وزيادة السفلية */
+    .filter-item:hover {
+      background: var(--hover-bg);
+      border-color: var(--primary-color);
     }
 
-    /* الزر */
-    .button {
-      background-color: white;
-      color: black;
-      border: none;
-      border-radius: 50px;
-      padding: 12px 30px;
-      font-size: 18px;
-      font-weight: 600;
+    .filter-item.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .view-toggle {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .view-toggle i {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--light-border);
+      background-color: var(--light-bg);
       cursor: pointer;
       transition: 0.3s;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
-      margin-bottom: 20px; /* إضافة مسافة تحت الزر */
     }
 
-    .button:hover {
-      background-color: #ddd;
+    .view-toggle i:hover {
+      background-color: var(--hover-bg);
     }
 
-    /* استعلامات الوسائط للتجاوب مع الشاشات المختلفة */
+    .view-toggle i.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .materials-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .materials-list.grid-view {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .material-item {
+      border: 1px solid #e7e7e7;
+      border-radius: 12px;
+      background: white;
+      padding: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .material-item:hover {
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .item-title {
+      display: flex;
+      align-items: self-start;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .item-title i {
+      font-size: 1.4rem;
+      background: var(--hover-bg);
+      color: var(--primary-color);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .item-title h3 {
+      font-size: 1.0rem;
+      color: #1d1d1d;
+    }
+
+    .item-description {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
     @media (max-width: 768px) {
-      .logo {
-        max-width: 100px;
-        top: 20px;
-        right: 20px;
+      .materials-list.grid-view {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       }
-      
-      .content {
-        margin-top: 70px;
-        margin-bottom: 35px;
-      }
-      
-      .main-image {
-        max-width: 250px;
-        margin-bottom: 8px;
-      }
-      
-      p {
-        font-size: 20px;
-        margin: 4px 0 20px;
-      }
-      
-      .button {
-        font-size: 16px;
-        padding: 10px 25px;
-        margin-bottom: 15px;
-      }
-    }
 
-    @media (max-width: 480px) {
-      .logo {
-        max-width: 80px;
-        top: 15px;
-        right: 15px;
+      .filter-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
       }
-      
-      .content {
-        margin-top: 60px;
-        margin-bottom: 30px;
-      }
-      
-      .main-image {
-        max-width: 200px;
-        margin-bottom: 6px;
-      }
-      
-      p {
-        font-size: 18px;
-        margin: 3px 0 18px;
-      }
-      
-      .button {
-        font-size: 14px;
-        padding: 8px 20px;
-        margin-bottom: 12px;
-      }
-    }
 
-    @media (max-height: 600px) {
-      .logo {
-        top: 15px;
-        right: 15px;
+      .filter-item,
+      .view-toggle i {
+        flex-shrink: 0;
       }
-      
-      .content {
-        margin-top: 60px;
-        margin-bottom: 25px;
-      }
-      
-      .main-image {
-        max-width: 200px;
-        margin-bottom: 5px;
-      }
-      
-      p {
-        margin: 2px 0 15px;
-      }
-      
-      .button {
-        margin-bottom: 10px;
+
+      .item-title i.item-icon {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        background: var(--hover-bg);
+        border-radius: 10px;
       }
     }
   </style>
 </head>
 <body>
+  <div id="topbar-container"></div>
 
-  <!-- شعار أعلى اليمين - مع مسافات مناسبة -->
-  <img src="https://rawafid.jassim.one/images/Rawafid-white.png" class="logo" >
+  <div class="container">
+    <div class="filter-bar" id="filter-bar">
+      <!-- تُملأ ديناميكيًا -->
+    </div>
 
-  <!-- الحاوية الرئيسية للمحتوى -->
-  <div class="content">
-    <!-- الصورة الرئيسية - بدون توهج -->
-    <img src="https://exam.jassim.one/main.PNG" class="main-image" >
+    <div class="materials-list" id="materials-list">
+      <!-- تُعرض المواد -->
+    </div>
 
-    <!-- النص -->
-    <p>انطلاقة جديدة!</p>
-    <p1>"بوابة الاختبارات" تنطلق من جديد تحت مسمى "روافد"</p1>
-
-    <!-- الزر -->
-    <a href="https://rawafid.jassim.one" class="button">اضغط للانتقال للموقع الجديد</a>
+    <div id="footer-placeholder"></div> 
   </div>
+
+ <script>
+  // تحميل الفوتر (كما في الكود الأصلي)
+  fetch("/footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    })
+    .catch(err => {
+      console.error("فشل تحميل الفوتر:", err);
+    });
+
+  const materialsList = document.getElementById('materials-list');
+  const filterBar = document.getElementById('filter-bar');
+  let allCourses = [];
+
+  function renderMaterialItems(items) {
+    materialsList.innerHTML = '';
+    items.forEach((item) => {
+      const el = document.createElement('div');
+      el.className = 'material-item';
+      el.style.cursor = 'pointer';
+
+      const iconColor = item.color || '#333';
+      const iconClass = item.icon || 'fa-book';
+
+      el.addEventListener('click', () => {
+        window.location.href = `https://rawafid.jassim.one/course?i=${item.code}`;
+      });
+
+      el.innerHTML = `
+        <div class="item-title">
+          <i class="fas ${iconClass} item-icon" style="color: ${iconColor};"></i>
+          <h3>${item.name}</h3>
+        </div>
+        ${item.hideCode ? '' : `<p class="item-code">رمز المقرر: ${item.code}</p>`}
+      `;
+      materialsList.appendChild(el);
+    });
+  }
+
+  function createFilters(courses) {
+    // جمع الأنواع (types) ووضع 'all' أولاً
+    const types = [...new Set(courses.map(c => c.type))];
+    types.unshift('all');
+
+    types.forEach(type => {
+      const filterBtn = document.createElement('div');
+      filterBtn.className = 'filter-item';
+      filterBtn.dataset.filter = type;
+      filterBtn.textContent = type === 'all' ? 'الكل' : type;
+      if (type === 'all') filterBtn.classList.add('active');
+
+      filterBtn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-item').forEach(btn => btn.classList.remove('active'));
+        filterBtn.classList.add('active');
+
+        const filtered = type === 'all' ? allCourses : allCourses.filter(c => c.type === type);
+        renderMaterialItems(filtered);
+      });
+
+      filterBar.appendChild(filterBtn);
+    });
+
+    // ← نضيف أزرار العرض بعد الفلاتر
+    const viewToggle = document.createElement('div');
+    viewToggle.className = 'view-toggle';
+
+    viewToggle.innerHTML = `
+      <i class="fas fa-list" id="list-view" title="عرض قائمة"></i>
+      <i class="fas fa-th-large" id="grid-view" title="عرض شبكي"></i>
+    `;
+
+    filterBar.appendChild(viewToggle);
+
+    // ربط الأحداث بعد إنشائهم
+    const gridBtn = viewToggle.querySelector('#grid-view');
+    const listBtn = viewToggle.querySelector('#list-view');
+
+    function applyVisualState(mode) {
+      if (mode === 'grid') {
+        materialsList.classList.add('grid-view');
+        gridBtn.classList.add('active');
+        listBtn.classList.remove('active');
+      } else {
+        materialsList.classList.remove('grid-view');
+        listBtn.classList.add('active');
+        gridBtn.classList.remove('active');
+      }
+    }
+
+    function setView(mode, save = true) {
+      applyVisualState(mode);
+      if (save) localStorage.setItem('viewMode', mode);
+    }
+
+    gridBtn.addEventListener('click', () => setView('grid'));
+    listBtn.addEventListener('click', () => setView('list'));
+
+    // التعيين التلقائي عند أول مرة: نحترم savedMode إذا وُجد
+    const savedMode = localStorage.getItem('viewMode');
+    if (savedMode) {
+      applyVisualState(savedMode);
+    } else {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      applyVisualState(isMobile ? 'list' : 'grid');
+    }
+
+    // إذا لم يكن هناك وضع محفوظ، نُحدِّث الوضع تلقائيًا عند تغيير حجم النافذة
+    // (لا نغيّر إذا المستخدم حَفِظ تفضيله)
+    if (!savedMode) {
+      const mq = window.matchMedia("(max-width: 768px)");
+      const onChange = (e) => {
+        applyVisualState(e.matches ? 'list' : 'grid');
+      };
+      // دعم الإضافة للكائن media query
+      if (typeof mq.addEventListener === 'function') {
+        mq.addEventListener('change', onChange);
+      } else if (typeof mq.addListener === 'function') {
+        mq.addListener(onChange);
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch("assets/data/materials.json")
+      .then(res => res.json())
+      .then(data => {
+        allCourses = data;
+        createFilters(data);
+        renderMaterialItems(data);
+      })
+      .catch(err => {
+        materialsList.innerHTML = `<p>❌ تعذر تحميل المواد: ${err}</p>`;
+      });
+  });
+
+  // تحميل التوب بار (كما في الكود الأصلي)
+  fetch("topbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("topbar-container").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "topbar.js";
+      document.body.appendChild(script);
+    })
+    .catch(err => console.error("فشل تحميل التوب بار:", err));
+</script>
 
 </body>
 </html>

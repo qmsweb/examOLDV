@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>روافد</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://rawafid.jassim.one/images/favicon.png" type="image/png">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 20px;
+      background: url('https://exam.jassim.one/cover.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      position: relative;
+    }
+
+    /* الشعار في الأعلى يمين - مع مسافات مناسبة */
+    .logo {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      max-width: 120px;
+      width: 20vw;
+      min-width: 80px;
+      height: auto;
+      z-index: 10;
+    }
+
+    /* الحاوية الرئيسية للمحتوى */
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 80px;
+      margin-bottom: 40px; /* إضافة مسافة من الأسفل */
+    }
+
+    /* الصورة الرئيسية - بدون توهج */
+    .main-image {
+      max-width: 300px;
+      width: 80%;
+      max-width: 300px;
+      min-width: 200px;
+      height: auto;
+      margin-bottom: 10px; /* تقليل المسافة تحت الصورة */
+      border-radius: 20px;
+    }
+
+    /* النص تحت الصورة */
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 5px 0 25px; /* تقليل المسافة العلوية وزيادة السفلية */
+    }
+
+ p1 {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0px 0 5px; /* تقليل المسافة العلوية وزيادة السفلية */
+    }
+
+    /* الزر */
+    .button {
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 20px; /* إضافة مسافة تحت الزر */
+    }
+
+    .button:hover {
+      background-color: #ddd;
+    }
+
+    /* استعلامات الوسائط للتجاوب مع الشاشات المختلفة */
+    @media (max-width: 768px) {
+      .logo {
+        max-width: 100px;
+        top: 20px;
+        right: 20px;
+      }
+      
+      .content {
+        margin-top: 70px;
+        margin-bottom: 35px;
+      }
+      
+      .main-image {
+        max-width: 250px;
+        margin-bottom: 8px;
+      }
+      
+      p {
+        font-size: 20px;
+        margin: 4px 0 20px;
+      }
+      
+      .button {
+        font-size: 16px;
+        padding: 10px 25px;
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        max-width: 80px;
+        top: 15px;
+        right: 15px;
+      }
+      
+      .content {
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
+      
+      .main-image {
+        max-width: 200px;
+        margin-bottom: 6px;
+      }
+      
+      p {
+        font-size: 18px;
+        margin: 3px 0 18px;
+      }
+      
+      .button {
+        font-size: 14px;
+        padding: 8px 20px;
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .logo {
+        top: 15px;
+        right: 15px;
+      }
+      
+      .content {
+        margin-top: 60px;
+        margin-bottom: 25px;
+      }
+      
+      .main-image {
+        max-width: 200px;
+        margin-bottom: 5px;
+      }
+      
+      p {
+        margin: 2px 0 15px;
+      }
+      
+      .button {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شعار أعلى اليمين - مع مسافات مناسبة -->
+  <img src="https://rawafid.jassim.one/images/Rawafid-white.png" class="logo" >
+
+  <!-- الحاوية الرئيسية للمحتوى -->
+  <div class="content">
+    <!-- الصورة الرئيسية - بدون توهج -->
+    <img src="https://exam.jassim.one/main.PNG" class="main-image" >
+
+    <!-- النص -->
+    <p>انطلاقة جديدة!</p>
+    <p1>"بوابة الاختبارات" تنطلق من جديد تحت مسمى "روافد"</p1>
+
+    <!-- الزر -->
+    <a href="https://rawafid.jassim.one" class="button">اضغط للانتقال للموقع الجديد</a>
+  </div>
+
+</body>
+</html>

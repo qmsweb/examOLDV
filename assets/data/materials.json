@@ -1,0 +1,21 @@
+[
+  { "name": "خطط تخصصات اللغة العربية", "type": "المثبتة", "code": "R1", "color": "#09c983", "icon": "fa-thumbtack", "hideCode": true
+ },
+ { "name": "اختبارات تحديد المستوى", "type": "المثبتة", "code": "F1", "color": "#09c983", "icon": "fa-thumbtack", "hideCode": true
+ },
+  { "name": "النحو 1", "type": "التخصصية", "code": "ARAB112", "color": "#D24545" },
+  { "name": "النحو 2", "type": "التخصصية", "code": "ARAB124", "color": "#D24545" },
+  { "name": "النحو 3", "type": "التخصصية", "code": "ARAB213", "color": "#D24545" },
+  { "name": "النحو 4", "type": "التخصصية", "code": "ARAB224", "color": "#D24545" },
+  { "name": "الصرف", "type": "التخصصية", "code": "ARAB215", "color": "#D24545" },
+  { "name": "مناهج اللغة العربية", "type": "التربوية", "code": "EDUC431", "color": "#59c9f1" },
+  { "name": "علم الصوتيات", "type": "التخصصية", "code": "ARAB229", "color": "#4b31de" },
+  { "name": "الشعر الجاهلي", "type": "التخصصية", "code": "ARAB111", "color": "#bdba12" },
+  { "name": "الشعر الإسلامي والأموي", "type": "التخصصية", "code": "ARAB122", "color": "#bdba12" },
+  { "name": "الشعر العباسي", "type": "التخصصية", "code": "ARAB212", "color": "#bdba12" },
+  { "name": "النثر القديم", "type": "التخصصية", "code": "ARAB125", "color": "#09c983" },
+  { "name": "النثر الحديث", "type": "التخصصية", "code": "ARAB312", "color": "#09c983" },
+  { "name": "اللغة العربية ومهاراتها", "type": "الجامعية", "code": "ARAB101", "color": "#a843d4" },
+  { "name": "الفلسفة", "type": "الجامعية", "code": "PHIL101A", "color": "#a843d4" },
+  { "name": "الحضارة الإسلامية", "type": "الجامعية", "code": "ISLM101", "color": "#a843d4" }
+]

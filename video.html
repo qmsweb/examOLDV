@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مشغل الفيديو - روافد</title>
+
+  <!-- خطوط -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.png" type="image/jpg">
+  <!-- أيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary-color: #1a2ac6;
+      --hover-bg: #e0e7ff;
+      --light-bg: #f0f2f7;
+      --light-border: #ccd1e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Noto Kufi Arabic", sans-serif;
+    }
+
+    body {
+      background-color: #f4f6fb;
+      color: #2d2d2d;
+      min-height: 100vh;
+      padding: 20px;
+      padding-top: 80px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+    }
+
+    .video-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--light-border);
+    }
+
+    .movie-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+    }
+
+    .movie-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1d1d1d;
+    }
+
+    .video-player {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .video-poster {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .play-button {
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .play-button:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .video-desc {
+      margin: 15px 0;
+      line-height: 1.6;
+      color: #555;
+      text-align: center;
+    }
+
+    .share-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 0 auto;
+    }
+
+    .share-btn:hover {
+      background: #1422a5;
+    }
+
+    #share-status {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: green;
+      display: none;
+    }
+
+    .error-message {
+      text-align: center;
+      color: red;
+      font-size: 1.2rem;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #ffeaea;
+      border-radius: 8px;
+    }
+
+    .loading {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #666;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      .movie-title {
+        font-size: 1.1rem;
+      }
+      .movie-logo {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="video-header">
+      <img id="movie-logo" src="" alt="شعار الفيلم" class="movie-logo">
+      <h1 id="movie-title" class="movie-title">تحميل...</h1>
+    </div>
+
+    <div class="video-player">
+      <div id="video-poster" class="video-poster">
+        <div class="play-button">
+          <i class="fas fa-play"></i>
+        </div>
+      </div>
+      <video controls id="video-element">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+
+    <p id="video-desc" class="video-desc"></p>
+
+    <button class="share-btn" id="share-btn">
+      <i class="fas fa-share"></i> مشاركة الرابط
+    </button>
+    <p id="share-status">تم نسخ الرابط ✅</p>
+    <div id="error-message" class="error-message"></div>
+  </div>
+
+  <script>
+    // بيانات الفيديوهات - JSON مصحح
+    const moviesData = [
+      {
+        "title": "الأمين على الكلمة",
+        "logo": "/images/movies/ameen-logo.PNG",
+        "bg": "/images/movies/ameen-back.PNG",
+        "desc": "سيرة أحمد أمين.",
+        "id": "ameen",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        "share-url": "https://rawafid.jassim.one/video/ameen" 
+      }
+    ];
+
+    // الحصول على معرف الفيديو من الرابط
+    function getVideoIdFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('id');
+    }
+
+    // تحميل بيانات الفيديو
+    function loadVideoData() {
+      const videoId = getVideoIdFromURL();
+      
+      // إذا لم يتم تحديد معرف، نستخدم أول فيديو كافتراضي
+      if (!videoId) {
+        console.warn('لم يتم تحديد معرف الفيديو، استخدام الفيديو الافتراضي');
+        return moviesData[0];
+      }
+      
+      const movie = moviesData.find(m => m.id === videoId);
+      
+      if (movie) {
+        document.title = `${movie.title} - روافد`;
+        document.getElementById('movie-title').textContent = movie.title;
+        document.getElementById('movie-logo').src = movie.logo;
+        document.getElementById('movie-logo').alt = movie.title;
+        document.getElementById('video-poster').style.backgroundImage = `url('${movie.bg}')`;
+        document.getElementById('video-desc').textContent = movie.desc;
+        
+        const videoElement = document.getElementById('video-element');
+        videoElement.src = movie.url;
+        videoElement.poster = movie.bg;
+        
+        return movie;
+      } else {
+        showError('الفيديو المطلوب غير موجود.');
+        return null;
+      }
+    }
+
+    // عرض رسالة خطأ
+    function showError(message) {
+      document.getElementById('error-message').textContent = message;
+      // إخفاء العناصر الأخرى
+      document.querySelector('.video-header').style.display = 'none';
+      document.querySelector('.video-player').style.display = 'none';
+      document.querySelector('.video-desc').style.display = 'none';
+      document.getElementById('share-btn').style.display = 'none';
+    }
+
+    // إخفاء رسالة الخطأ
+    function hideError() {
+      document.getElementById('error-message').textContent = '';
+      // إظهار العناصر مرة أخرى
+      document.querySelector('.video-header').style.display = 'flex';
+      document.querySelector('.video-player').style.display = 'block';
+      document.querySelector('.video-desc').style.display = 'block';
+      document.getElementById('share-btn').style.display = 'flex';
+    }
+
+    // تهيئة الفيديو
+    function initVideo() {
+      const movie = loadVideoData();
+      if (!movie) {
+        return;
+      }
+
+      hideError();
+      
+      const videoPoster = document.getElementById('video-poster');
+      const videoElement = document.getElementById('video-element');
+      const playButton = document.querySelector('.play-button');
+      
+      playButton.addEventListener('click', function() {
+        videoPoster.style.display = 'none';
+        videoElement.style.display = 'block';
+        videoElement.play().catch(e => {
+          console.error('خطأ في تشغيل الفيديو:', e);
+        });
+      });
+      
+      // زر المشاركة
+      const shareBtn = document.getElementById('share-btn');
+      const shareStatus = document.getElementById('share-status');
+      
+      shareBtn.addEventListener('click', async () => {
+        const url = movie['share-url'];
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: movie.title, url });
+          } catch (err) {
+            console.error('فشل المشاركة:', err);
+          }
+        } else {
+          try {
+            await navigator.clipboard.writeText(url);
+            shareStatus.style.display = 'block';
+            shareStatus.textContent = "تم نسخ الرابط ✅";
+            setTimeout(() => shareStatus.style.display = 'none', 2000);
+          } catch (err) {
+            console.error('فشل نسخ الرابط:', err);
+            shareStatus.style.display = 'block';
+            shareStatus.textContent = "فشل نسخ الرابط ❌";
+            shareStatus.style.color = "red";
+            setTimeout(() => shareStatus.style.display = 'none', 2000);
+          }
+        }
+      });
+
+      // معالجة أخطاء تحميل الصور
+      document.getElementById('movie-logo').addEventListener('error', function() {
+        this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iOCIgZmlsbD0iI0YwRjBGMCIvPgo8cGF0aCBkPSJNMzAgMTZDMjYuOCAxNiAyNCAxOC44IDI0IDIyQzI0IDI1LjIgMjYuOCAyOCAzMCAyOEMzMy4yIDI4IDM2IDI1LjIgMzYgMjJDMzYgMTguOCAzMy4yIDE2IDMwIDE2Wk0zMCA0MEMyMy42IDQwIDE4IDM2LjY0IDE4IDMyLjI4QzE4IDI3LjkyIDIzLjYgMjAgMzAgMjBDMzYuNCAyMCA0MiAyNy45MiA0MiAzMi4yOEM0MiAzNi42NCAzNi40IDQwIDMwIDQwWiIgZmlsbD0iIzk5OTk5OSIvPgo8L3N2Zz4K';
+      });
+
+      document.getElementById('video-poster').addEventListener('error', function() {
+        this.style.backgroundImage = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+      });
+    }
+
+    // تهيئة الصفحة عند التحميل
+    document.addEventListener('DOMContentLoaded', initVideo);
+  </script>
+</body>
+</html>
